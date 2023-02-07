@@ -1,3 +1,5 @@
+# Basic python
+
 def is_stop(x):
     if a % 2 == 0:
         return x % 4 == 0
