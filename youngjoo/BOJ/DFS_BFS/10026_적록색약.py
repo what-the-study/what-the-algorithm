@@ -3,12 +3,7 @@
 import sys
 
 sys.setrecursionlimit(10000)
-
-# 상 하 좌 우
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-normal = {'R': 3, 'B': 2, 'G': 1}
-weak = {'R': 2, 'B': 1, 'G': 2}
+input = sys.stdin.readline
 
 
 def dfs(x, y, visited, status):
@@ -20,11 +15,15 @@ def dfs(x, y, visited, status):
             dfs(nx, ny, visited, status)
 
 
-n = int(input())
-grid = [input() for _ in range(n)]
+n = int(input().rstrip())
+grid = [input().rstrip() for _ in range(n)]
 visited1 = [[False] * n for _ in range(n)]
 visited2 = [[False] * n for _ in range(n)]
+dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1]
+normal = {'R': 3, 'B': 2, 'G': 1}
+weak = {'R': 2, 'B': 1, 'G': 2}
 count1, count2 = 0, 0
+
 for i in range(n):
     for j in range(n):
         if not visited1[i][j]:
@@ -33,4 +32,5 @@ for i in range(n):
         if not visited2[i][j]:
             dfs(i, j, visited2, weak)
             count2 += 1
+
 print(count1, count2)
