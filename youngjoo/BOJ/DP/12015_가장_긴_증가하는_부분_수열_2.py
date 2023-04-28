@@ -4,13 +4,13 @@ from bisect import bisect_left
 
 n = int(input())
 a = list(map(int, input().split()))
-dp = [a[0]]
+numbers = [a[0]]
 
 for i in range(1, n):
-    if dp[-1] < a[i]:
-        dp.append(a[i])
+    if numbers[-1] < a[i]:
+        numbers.append(a[i])
     else:
-        index = bisect_left(dp, a[i])
-        dp[index] = a[i]
+        index = bisect_left(numbers, a[i])
+        numbers[index] = a[i]
 
-print(len(dp))
+print(len(numbers))
